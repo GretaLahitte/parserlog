@@ -18,7 +18,7 @@ process.stdin.pipe(require('split')()).on('data', processLine);
 function processLine (line) {
 	mongodb.MongoClient.connect("mongodb://localhost/"+db_name, function(error, db) {
 		if (error) return funcCallback(error.red);
-		console.log("Connecté à la base de données ".green+db_name.yellow);
+		console.log("Connected to db ".green+db_name.yellow);
 		var obj = JSON.parse(line);
 		//console.log(obj);
 		
@@ -26,9 +26,8 @@ function processLine (line) {
 			if (err) throw err;
 			console.log(up.magenta);
 			db.collection(db_name).find()
-			});
-		
-});
+		});
+	});
 }
 
 
